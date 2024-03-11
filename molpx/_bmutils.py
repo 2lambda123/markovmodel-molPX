@@ -1012,7 +1012,7 @@ def add_atom_idxs_widget(atom_idxs, ngl_wdg, color_list=None, radius=1):
     elif isinstance(color_list, list) and len(color_list)<len(atom_idxs):
         color_list += [color_list[-1]]*(len(atom_idxs)-len(color_list))
 
-    if atom_idxs is not []:
+    if atom_idxs != []:
         for cc in range(len(ngl_wdg._ngl_component_ids)):
             for iidxs, color in zip(atom_idxs, color_list):
                 if _is_int(iidxs):
