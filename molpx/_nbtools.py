@@ -7,6 +7,7 @@ import shutil
 import subprocess
 
 from tempfile import mkdtemp
+from security import safe_command
 
 def _molpxdir(join=None):
     r"""
@@ -163,7 +164,7 @@ def example_notebooks(dry_run=False, extra_flags_as_one_string=None, **kwargs_su
             cmd ='%s %s'%(cmd,extra_flags_as_one_string)
 
         try:
-            subprocess.run(cmd.split(), **kwargs_subprocess)
+            safe_command.run(subprocess.run, cmd.split(), **kwargs_subprocess)
         except AssertionError:
             _warnings.warn("molpx.example_notebooks could not open an in interactive shell. "
                            "Nothing happened.")
